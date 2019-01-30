@@ -1,0 +1,244 @@
+\appendix
+\section{The Growth of the Number of
+Blocks of Symbols with a Finite State Condition}
+\label{ap:1}
+
+Let $N_i(L)$ be the number of blocks of symbols of length $L$ ending in
+state $i$.  Then we have
+$$
+N_j(L)=\sum_{i,s}N_i\big(L-b_{ij}^{(s)}\bigr)
+$$
+where $b_{ij}^1,b_{ij}^2,\dots,b_{ij}^m$ are the length of the symbols which
+may be chosen in state $i$ and lead to state $j$.  These are linear
+difference equations and the behavior as $L\to\infty$ must be of the
+type
+$$
+N_j=A_j W^L.
+$$
+Substituting in the difference equation
+\begin{gather*}
+A_j W^L=\sum_{i,s} A_i W^{L-b_{ij}^{(s)}}\\
+\intertext{or}
+A_j=\sum_{i,s} A_i W^{-b_{ij}^{(s)}}\\
+\sum_i\Bigl(\sum_{s}
+    W^{-b_{ij}^{(s)}}-\delta_{ij}\Bigr)A_i=0.
+\end{gather*}
+For this to be possible the determinant
+$$
+D(W)=|a_{ij}|=\Bigl|\sum_{s}
+  W^{-b_{ij}^{(s)}}-\delta_{ij}\Bigr|
+$$
+must vanish and this determines $W$, which is, of course, the largest real
+root of $D=0$.
+
+The quantity $C$ is then given by
+$$
+C=\lim_{L\to\infty}\frac{\log\sum A_j W^L}{L}=\log W
+$$
+and we also note that the same growth properties result if we require that
+all blocks start in the same (arbitrarily chosen) state.
+
+\section{Derivation of $H=-\sum p_i\log p_i$}
+\label{ap:2}
+
+Let $\displaystyle H\Bigl(\frac1n,\frac1n,\dots,\frac1n\Bigr)=A(n)$.  From
+condition~(\ref{cond:3}) we can decompose a choice from $s^m$ equally likely
+possibilities into a series of $m$ choices from $s$ equally likely
+possibilities and obtain
+$$
+A(s^m)=mA(s).
+$$
+Similarly
+$$
+A(t^n)=nA(t).
+$$
+We can choose $n$ arbitrarily large and find an $m$ to satisfy
+$$
+s^m\leq t^n<s^{(m+1)}.
+$$
+Thus, taking logarithms and dividing by $n\log s$,
+$$
+\frac m n \leq \frac{\log\, t}{\log\, s}\leq
+   \frac m n + \frac 1 n
+\quad\text{or}\quad
+\Bigl|\frac m n - \frac{\log\, t}{\log\, s}\Bigr|<\eps
+$$
+where $\eps$ is arbitrarily small.  Now from the monotonic property of
+$A(n)$,
+\begin{gather*}
+A(s^m)\leq A(t^n)\leq A(s^{m+1})\\
+m A(s)\leq n A(t) \leq (m+1) A(s).
+\end{gather*}
+Hence, dividing by $n A(s)$,
+$$
+\frac m n \leq \frac{A(t)}{A(s)}\leq \frac m n + \frac 1 n
+\quad\text{or}\quad
+\Bigl|\frac m n - \frac{A(t)}{A(s)}\Bigr|<\eps
+$$
+$$
+\Bigl|\frac{A(t)}{A(s)} - \frac{\log t}{\log s}\Bigr|<2\eps
+\qquad
+A(t)=K\log t
+$$
+where $K$ must be positive to satisfy~(\ref{cond:2}).
+
+Now suppose we have a choice from $n$ possibilities with commeasurable
+probabilities $\displaystyle p_i=\frac{n_i}{\sum n_i}$ where the $n_i$
+are integers.  We can break down a choice from $\sum n_i$ possibilities
+into a choice from $n$ possibilities with probabilities $p_1,\dots,p_n$
+and then, if the $i$th was chosen, a choice from $n_i$ with
+equal probabilities.  Using condition~(\ref{cond:3}) again, we equate
+the total choice from $\sum n_i$ as computed by two methods
+$$
+K\log\sum n_i=H(p_1,\dots,p_n)+K\sum p_i\log n_i.
+$$
+Hence
+\begin{align*}
+H&=K\Bigl[\sum p_i\log\sum n_i-\sum p_i\log n_i\Bigr]\\
+&=-K\sum p_i\log\frac{n_i}{\sum n_i}=-K\sum p_i\log p_i.
+\end{align*}
+If the $p_i$ are incommeasurable, they may be approximated by rationals and
+the same expression must hold by our continuity assumption.  Thus the
+expression holds in general.  The choice of coefficient $K$ is a matter of
+convenience and amounts to the choice of a unit of measure.
+
+\section{Theorems on Ergodic Sources}
+\label{ap:3}
+
+If it is possible to go from any state with $P>0$ to any other along a path
+of probability $p>0$, the system is ergodic and the strong law of large
+numbers can be applied.  Thus the number of times a given path $p_{ij}$ in the
+network is traversed in a long sequence of length $N$ is about proportional
+to the probability of being at $i$, say $P_i$, and then choosing this
+path, $P_ip_{ij}N$.  If $N$ is large enough the probability of percentage
+error $\pm\delta$ in this is less than $\eps$ so that for all but a set of
+small probability the actual numbers lie within the limits
+$$
+(P_ip_{ij}\pm\delta)N.
+$$
+Hence nearly all sequences have a probability $p$ given by
+$$
+p=\prod p_{ij}^{(P_ip_{ij}\pm\delta)N}
+$$
+and $\displaystyle\frac{\log p}{N}$ is limited by
+$$
+\frac{\log p}{N}=\sum(P_ip_{ij}\pm\delta)\log p_{ij}
+$$
+or
+$$
+\Bigl|\frac{\log p}{N}-\sum P_ip_{ij}\log p_{ij}\Bigl|<\eta.
+$$
+This proves Theorem~\ref{thm:3}.
+
+Theorem~\ref{thm:4} follows immediately from this on calculating upper and
+lower bounds for $n(q)$ based on the possible range of values of $p$ in
+Theorem~\ref{thm:3}.
+
+In the mixed (not ergodic) case if
+$$
+L=\sum p_i L_i
+$$
+and the entropies of the components are $H_1\geq H_2\geq\dots\geq H_n$ we
+have the
+\begin{theorem*}
+$\lim\limits_{N\to\infty}\frac{\log n(q)}{N}=\varphi(q)$ is a decreasing step function,
+$$
+\varphi(q)=H_s
+\quad\text{in the interval}\quad
+\sum_1^{s-1}\alpha_i<q<\sum_1^s\alpha_i.
+$$
+\end{theorem*}
+
+To prove Theorems~\ref{thm:5} and~\ref{thm:6}
+first note that $F_N$ is
+monotonic decreasing because increasing $N$ adds a subscript to a
+conditional entropy.  A simple substitution for
+$p_{B_i}(S_j)$ in the
+definition of $F_N$ shows that
+$$
+F_N=NG_N-(N-1)G_{N-1}
+$$
+and summing this for all $N$ gives $\displaystyle G_N=\frac 1N\sum F_n$.
+Hence $G_N\geq F_N$ and $G_N$ monotonic decreasing.  Also they must approach
+the same limit.  By using Theorem~\ref{thm:3} we see that
+$\lim\limits_{N\to\infty}G_N=H$.
+
+\section{Maximizing the Rate for a System of Constraints}
+\label{ap:4}
+
+Suppose we have a set of constraints on sequences of symbols that is of
+the finite state type and can be represented therefore by a linear graph.
+Let $\ell_{ij}^{(s)}$ be the lengths of the
+various symbols that can occur in passing from state $i$ to state $j$.
+What distribution of probabilities $P_i$ for the different states and
+$p_{ij}^{(s)}$ for choosing symbol $s$ in state $i$ and going to state $j$
+maximizes the rate of generating information under these constraints?
+The constraints define a discrete channel and the maximum rate must be
+less than or equal to the capacity $C$ of this channel, since if all
+blocks of large length were equally likely, this rate would result,
+and if possible this would be best.  We will show that this rate can be
+achieved by proper choice of the $P_i$ and $p_{ij}^{(s)}$.
+
+The rate in question is
+$$
+\frac{-\sum P_i p_{ij}^{(s)}\log p_{ij}^{(s)}}%
+	{\sum P_{i} p_{ij}^{(s)} \ell_{ij}^{(s)}}
+=\frac{N}{M}.
+$$
+
+Let $\ell_{ij}=\sum_s\ell_{ij}^{(s)}$.  Evidently for a maximum
+$p_{ij}^{(s)}=k\exp \ell_{ij}^{(s)}$.  The constraints on maximization are
+$\sum P_i=1$, $\sum_j p_{ij}=1$, $\sum P_i(p_{ij}-\delta_{ij})=0$.
+Hence we maximize
+\begin{align*}
+U&=\frac{-\sum P_i p_{ij}\log p_{ij}}{\sum P_i p_{ij} \ell_{ij}}
++\lambda\sum_i P_i+\sum\mu_i p_{ij}+\sum\eta_j P_i(p_{ij}-\delta_{ij})\\
+\frac{\partial U}{\partial p_{ij}}&=
+  -\frac{M P_i(1+\log p_{ij})+NP_i\ell_{ij}}{M^2}+\lambda+\mu_i+\eta_i P_i=0.
+\end{align*}
+Solving for $p_{ij}$
+$$
+p_{ij}=A_i B_j D^{-\ell_{ij}}.
+$$
+Since
+\begin{gather*}
+\sum_j p_{ij}=1,\quad A_i^{-1}=\sum_j B_j D^{-\ell_{ij}}\\
+p_{ij}=\frac{B_j D^{-\ell_{ij}}}{\sum_s B_s D^{-\ell_{is}}}.
+\end{gather*}
+The correct value of $D$ is the capacity $C$ and the $B_j$ are solutions of
+$$
+B_i=\sum B_j C^{-\ell_{ij}}
+$$
+for then
+\begin{gather*}
+p_{ij}=\frac{B_j}{B_i}C^{-\ell_{ij}}\\
+\sum P_i\frac{B_j}{B_i}C^{-\ell_{ij}}=P_j
+\end{gather*}
+or
+$$
+\sum \frac{P_i}{B_i}C^{-\ell_{ij}}=\frac{P_j}{B_j}.
+$$
+So that if $\lambda_i$ satisfy
+\begin{gather*}
+\sum\gamma_i C^{-\ell_{ij}} = \gamma_j\\
+P_i=B_i\gamma_i.
+\end{gather*}
+Both the sets of equations for $B_i$ and $\gamma_i$ can be satisfied since
+$C$ is such that
+$$
+|C^{-\ell_{ij}}-\delta_{ij}|=0.
+$$
+In this case the rate is
+$$
+-\frac{\sum P_ip_{ij}\log\frac{B_j}{B_i}C^{-\ell_{ij}}}
+  {\sum P_ip_{ij}\ell_{ij}}
+=C-\frac{\sum P_ip_{ij}\log\frac{B_j}{B_i}}{\sum P_ip_{ij}\ell_{ij}}
+$$
+but
+$$
+\sum P_i p_{ij}(\log B_j-\log B_i)=\sum_j P_j\log B_j-\sum P_i\log B_i=0
+$$
+Hence the rate is $C$ and as this could never be exceeded this is the
+maximum, justifying the assumed solution.
+
+\endappendix

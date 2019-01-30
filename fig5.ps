@@ -1,0 +1,96 @@
+%!PS-Adobe-2.0 EPSF-3.0
+%%BoundingBox: 0 0 245 210
+%%EndComments
+/rarrowto {
+        2 copy rlineto
+        gsave
+        currentpoint newpath moveto
+        exch atan rotate
+        dup scale
+        -1 .3 rlineto .2 -.3 rlineto -0.2 -.3 rlineto closepath fill
+        grestore
+} def
+/arrowto {
+        currentpoint 3 -1 roll sub neg 3 1 roll sub exch rarrowto
+} def
+/rfarrowto {
+        3 -1 roll 3 copy
+                dup 3 1 roll mul 3 1 roll mul exch
+        6 2 roll 1 sub neg dup 3 1 roll mul 3 1 roll mul exch rarrowto rlineto
+} def
+/farrowto{
+        currentpoint 3 -1 roll sub neg 3 1 roll sub exch rfarrowto
+} def
+/bullet {2 0 360 arc closepath fill} def
+%%EndProlog
+gsave
+.6 setlinewidth
+40 195 bullet 110 200 bullet 190 200 bullet
+50 150 bullet 110 135 bullet 130 155 bullet 170 160 bullet
+5 120 bullet 50 120 bullet 90 120 bullet 170 120 bullet 240 130 bullet
+50 95 bullet 120 90 bullet
+40 75 bullet 160 80 bullet
+40 30 bullet 170 40 bullet
+
+5 120 moveto
+  7 .5 40 195 farrowto
+  7 .5 110 200 farrowto
+  7 .5 190 200 farrowto
+  7 .5 240 130 farrowto
+190 200 moveto
+  210 195 210 195 220 175 curveto
+  -1 2 rmoveto 7 1 -2 rarrowto
+  230 155 235 140 240 130 curveto
+5 120 moveto
+  7 .5 50 150 farrowto
+  7 .5 130 155 farrowto
+  7 .5 170 160 farrowto
+  7 .5 240 130 farrowto
+130 155 moveto
+  7 .5 240 130 farrowto
+130 155 moveto
+  7 .5 170 120 farrowto
+  7 .5 240 130 farrowto
+50 150 moveto
+  7 .5 110 135 farrowto
+  7 .5 170 120 farrowto
+5 120 moveto
+  7 .5 50 95 farrowto
+  7 .5 90 120 farrowto
+  7 .5 170 120 farrowto
+50 95 moveto
+  7 .5 50 120 farrowto
+  7 .5 90 120 farrowto
+50 120 moveto
+  7 .5 5 120 farrowto
+  7 .5 40 75 farrowto
+  7 .5 120 90 farrowto
+  7 .5 170 120 farrowto
+120 90 moveto
+  7 .5 240 130 farrowto
+40 75 moveto
+  7 .5 160 80 farrowto
+  7 .5 240 130 farrowto
+160 80 moveto
+  180 85 180 87 200 97 curveto
+  -1 -.5 rmoveto 7 1 .5 rarrowto
+  220 107 230 124 240 130 curveto
+5 120 moveto
+  7 .5 40 30 farrowto
+  70 40 120 50 150 60 curveto
+  -1 -.3 rmoveto 7 1 .3 rarrowto
+  180 70 220 105 240 130 curveto
+40 30 moveto
+  7 .5 170 40 farrowto
+  7 .5 240 130 farrowto
+240 35 190 16 160 10 curveto
+  1 .23 rmoveto 7 -1 -.23 rarrowto
+  40 -14 5 15 5 120 curveto
+40 195 moveto
+  10 185 11 175 10 165 curveto
+  .1 1 rmoveto 7 -.1 -1 rarrowto
+  9 155 5 135 5 120 curveto
+
+stroke
+grestore
+%%EOF

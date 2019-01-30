@@ -1,0 +1,110 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{shannon1948}[1996/02/12 v1.1]
+\ProcessOptions
+
+\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\hspace{.5em}}
+
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+  {-2.0ex \@plus -.5ex \@minus -.1ex}{1.5ex \@plus.2ex}%
+  {\normalfont\normalsize\scshape\centering}}
+
+\newcounter{appendix}
+%\newcommand{\theappendix}{\arabic{appendix}}
+\newcommand{\@ppendixsection}[2][?]{%
+  \refstepcounter{appendix}%
+  \addcontentsline{toc}{appendix}%
+    {\protect\numberline{\appendixname~\theappendix} #1}%
+  \par\vskip\baselineskip%
+  \begingroup\normalfont\normalsize\scshape\centering%
+     \interlinepenalty\@M\MakeUppercase{\appendixname}\ \theappendix%
+     \@@par\nobreak\addvspace{.5\baselineskip}%
+     \interlinepenalty\@M #2\@@par\endgroup%
+  \sectionmark{#1}\par\nobreak\vskip0.5\baselineskip\@afterheading\ignorespaces}
+\newcommand{\s@ppendixsection}[1]{%
+  \par\vskip\baselineskip%
+  \begingroup\normalfont\normalsize\scshape\centering
+     \interlinepenalty\@M\MakeUppercase{\appendixname}%
+     \@@par\nobreak\addvspace{.5\baselineskip}%
+     \interlinepenalty\@M \normalsize#1\@@par\endgroup%
+  \par\nobreak\vskip 0.5\baselineskip\@afterheading\ignorespaces}
+
+\renewcommand{\appendix}{%
+  \let\@ldsection\section%
+  \renewcommand{\section}{%
+    \secdef\@ppendixsection\s@ppendixsection}%
+  %\setcounter{section}{0}%
+  }
+\def\endappendix{%
+  \let\section\@ldsection}
+
+\newcommand{\p@rt}[2][?]{%
+  \refstepcounter{part}
+  {\par\vspace{\baselineskip}
+  \centering\normalfont\large%
+    \uppercase\expandafter{\partname}\ \thepart: \uppercase{#2}\par\nobreak}
+  \vspace{\baselineskip}\@afterheading\ignorespaces}
+\newcommand{\sp@rt}[1]{%
+  {\par\vspace{\baselineskip}
+  \centering\normalfont\large%
+    \uppercase\expandafter{\partname}: \uppercase{#1}\par\nobreak}
+  \vspace{\baselineskip}}
+\renewcommand{\part}{\secdef\p@rt\sp@rt}
+
+\newcommand{\PARstart}[2]{%
+  \begingroup\def\par{\endgraf\endgroup\lineskiplimit=0pt}
+  \setbox2=\hbox{\uppercase{#2} }\newdimen\tmpht \tmpht \ht2
+  \advance\tmpht by \baselineskip\font\hhuge=cmr10 at \tmpht
+  \setbox1=\hbox{{\hhuge #1}}
+  \count7=\tmpht \count8=\ht1\divide\count8 by 1000 \divide\count7 by\count8
+  \tmpht=.001\tmpht\multiply\tmpht by \count7\font\hhuge=cmr10 at \tmpht
+  \setbox1=\hbox{{\hhuge #1}} \noindent \hangindent1.05\wd1
+  \hangafter=-2 {\hskip-\hangindent \lower1\ht1\hbox{\raise1.0\ht2\copy1}%
+  \kern-0\wd1}\copy2\lineskiplimit=-1000pt}
+
+\renewcommand{\tablename}{TABLE}
+\renewcommand{\thetable}{\Roman{table}}
+
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\fnum@figure}{\figurename~\thefigure}
+
+\long\def\@caption#1[#2]#3{\par\addcontentsline{\csname ext@#1\endcsname}{#1}{%
+   \protect\numberline{\csname the#1\endcsname}{\ignorespaces #2}}
+   \begingroup \@parboxrestore \normalsize
+     \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}{#1}\par
+   \endgroup}
+
+\def\tablestring{table}
+\def\figurestring{figure}
+
+\newlength{\captionindent}
+\long\def\@makecaption#1#2#3{
+\ifx\figurestring#3
+    \vskip 5pt
+    \setbox\@tempboxa\hbox{\small #1\kern1pt---\kern1pt#2}
+    \ifdim \wd\@tempboxa>\hsize
+       \setbox\@tempboxa\hbox{\small #1\kern1pt---}
+       \setlength\captionindent{\wd\@tempboxa} \divide\captionindent by 2
+       \parbox[t]{\hsize}{\small \hangindent \captionindent \hangafter=1%
+       \unhbox\@tempboxa#2}
+    \else \hbox to\hsize{\small\hfil\box\@tempboxa\hfil}
+    \fi
+\else
+    \begin{center}{\small #1}\\{\small\sc #2}\end{center}
+    \vskip 8pt
+\fi}
+
+\renewcommand{\@maketitle}{%
+  \newpage
+  \null
+  \vskip 0em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\Large \@title \par}%
+    \vskip 1.5em%
+    {\normalsize%
+      \lineskip .5em%
+      By \begin{tabular}[t]{@{}c@{}}%
+        \uppercase\expandafter{\@author}
+      \end{tabular}\par}%
+  \end{center}%
+  \par}

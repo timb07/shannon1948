@@ -1,0 +1,56 @@
+%!PS-Adobe-2.0 EPSF-3.0
+%%BoundingBox: 0 0 120 80
+%%EndComments
+/rarrowto {
+	2 copy rlineto
+	gsave
+	currentpoint newpath moveto
+	exch atan rotate
+	dup scale
+	-1 .3 rlineto .2 -.3 rlineto -0.2 -.3 rlineto closepath fill
+	grestore
+} def
+/bullet {2 0 360 arc closepath fill} def
+%%EndProlog
+
+gsave
+.6 setlinewidth
+1 40 bullet
+75 40 bullet
+
+1 40 moveto
+1 60 16 75 38 75 curveto
+-1 -.1 rmoveto
+8 1 .1 rarrowto
+60 75 75 60 75 40 curveto
+stroke
+75 40 moveto
+75 20 60 5 38 5 curveto
+1 .1 rmoveto
+8 -1 -.1 rarrowto
+16 5 1 20 1 40 curveto
+stroke
+1 40 moveto
+1 50 26 55 38 55 curveto
+-1 -.1 rmoveto
+8 1 .1 rarrowto
+50 55 75 50 75 40 curveto
+stroke
+75 40 moveto
+75 30 50 25 38 25 curveto
+1 .1 rmoveto
+8 -1 -.1 rarrowto
+26 25 1 30 1 40 curveto
+stroke
+75 40 moveto
+85 65 105 52 85 44 curveto
+1 .6 rmoveto 8 -1 -.6 rarrowto
+75 40 lineto
+stroke
+75 40 moveto
+85 15 105 28 85 36 curveto
+1 -.6 rmoveto 8 -1 .6 rarrowto
+75 40 lineto
+stroke
+grestore
+%%EOF

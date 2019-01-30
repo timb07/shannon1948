@@ -1,0 +1,34 @@
+%!PS-Adobe-2.0 EPSF-3.0
+%%BoundingBox: 0 0 315 142
+%%EndComments
+/box { % hsize vsize hpos vpos
+	newpath moveto
+	dup 0 exch rlineto
+	exch 0 rlineto
+	neg 0 exch rlineto
+	closepath } def
+/rarrowto {
+	2 copy rlineto
+	gsave
+	currentpoint newpath moveto
+	exch atan rotate
+	dup scale
+	-1 .3 rlineto .2 -.3 rlineto -0.2 -.3 rlineto closepath fill
+	grestore
+} def
+%%EndProlog
+gsave
+.6 setlinewidth
+42 40 3 80 box stroke
+45 100 moveto 8 18 0 rarrowto stroke
+42 40 63 80 box stroke
+105 100 moveto 8 48 0 rarrowto stroke
+12 12 153 94 box stroke
+165 100 moveto 8 48 0 rarrowto stroke
+42 40 213 80 box stroke
+255 100 moveto 8 18 0 rarrowto stroke
+42 40 273 80 box stroke
+159 55 moveto 8 0 39 rarrowto stroke
+42 40 138 15 box stroke
+grestore
+%%EOF

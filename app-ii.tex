@@ -1,0 +1,217 @@
+\appendix
+\section{}
+\label{ap:5}
+
+Let $S_1$ be any measurable subset of the $g$ ensemble, and $S_2$ the
+subset of the $f$ ensemble which gives $S_1$ under the operation $T$.  Then
+$$
+S_1=TS_2.
+$$
+Let $H^\lambda$ be the operator which shifts all functions in a set by the
+time $\lambda$.  Then
+$$
+H^\lambda S_1=H^\lambda TS_2=TH^\lambda S_2
+$$
+since $T$ is invariant and therefore commutes with $H^\lambda$.  Hence if
+$m[S]$ is the probability measure of the set $S$
+\begin{align*}
+m[H^\lambda S_1]&=m[TH^\lambda S_2]=m[H^\lambda S_2]\\
+&=m[S_2]=m[S_1]
+\end{align*}
+where the second equality is by definition of measure in the $g$ space, the
+third since the $f$ ensemble is stationary, and the last by definition
+of $g$ measure again.
+
+To prove that the ergodic property is preserved under invariant operations,
+let $S_1$ be a subset of the $g$ ensemble which is invariant under
+$H^\lambda$, and let $S_2$ be the set of all functions $f$ which transform
+into $S_1$.  Then
+$$
+H^\lambda S_1=H^\lambda TS_2=TH^\lambda S_2=S_1
+$$
+so that $H^\lambda S_2$ is included in $S_2$ for all $\lambda$.  Now,
+since
+$$
+m[H^\lambda S_2]=m[S_1]
+$$
+this implies
+$$
+H^\lambda S_2=S_2
+$$
+for all $\lambda$ with $m[S_2]\neq 0,1$.  This contradiction shows that
+$S_1$ does not exist.
+
+\section{}
+\label{ap:6}
+
+The upper bound, $\overline N_3\leq N_1+N_2$, is due to the fact that
+the maximum possible entropy for a power $N_1+N_2$ occurs when we have
+a white noise of this power.  In this case the entropy power is $N_1+N_2$.
+
+To obtain the lower bound, suppose we have two distributions in $n$
+dimensions $p(x_i)$ and $q(x_i)$ with entropy powers $\overline N_1$
+and $\overline N_2$.  What form should $p$ and $q$ have to minimize the
+entropy power $\overline N_3$ of their convolution $r(x_i)$:
+$$
+r(x_i)=\int p(y_i)q(x_i-y_i)\,dy_i.
+$$
+
+The entropy $H_3$ of $r$ is given by
+$$
+H_3=-\int r(x_i)\log r(x_i)\,dx_i.
+$$
+We wish to minimize this subject to the constraints
+\begin{align*}
+H_1&=-\int p(x_i)\log p(x_i)\,dx_i\\
+H_2&=-\int q(x_i)\log q(x_i)\,dx_i.
+\end{align*}
+We consider then
+\begin{align*}
+U&=-\int\bigl[r(x)\log r(x)+\lambda p(x)\log p(x)
+	+\mu q(x)\log q(x)\bigr]\,dx\\
+\delta U&=-\int\bigl[[1+\log r(x)]\delta r(x)
+	+\lambda[1+\log p(x)]\delta p(x) % \\ &\hspace{15em}
+        +\mu[1+\log q(x)]
+         \delta q(x)\bigr]\,dx.
+\end{align*}
+
+If $p(x)$ is varied at a particular argument $x_i=s_i$, the variation in
+$r(x)$ is
+$$
+\delta r(x)=q(x_i-s_i)
+$$
+and
+$$
+\delta U=-\int q(x_i-s_i)\log r(x_i)\,dx_i-\lambda\log p(s_i)=0
+$$
+and similarly when $q$ is varied.  Hence the conditions for a minimum are
+\begin{align*}
+\int q(x_i-s_i)\log r(x_i)\,dx_i
+&=-\lambda \log p(s_i)\\
+\int p(x_i-s_i)\log r(x_i)\,dx_i
+&=-\mu \log q(s_i).
+\end{align*}
+If we multiply the first by $p(s_i)$ and the second by $q(s_i)$ and
+integrate with respect to $s_i$ we obtain
+\begin{align*}
+H_3=-\lambda H_1\\
+H_3=-\mu H_2
+\end{align*}
+or solving for $\lambda$ and $\mu$ and replacing in the equations
+\begin{align*}
+H_1\int q(x_i-s_i)\log r(x_i)\,dx_i&=-H_3 \log p(s_i)\\
+H_2\int p(x_i-s_i)\log r(x_i)\,dx_i&=-H_3 \log q(s_i).
+\end{align*}
+Now suppose $p(x_i)$ and $q(x_i)$ are normal
+\begin{align*}
+p(x_i)=\frac{|A_{ij}|^{n/2}}{(2\pi)^{n/2}}\exp -\tfrac12\sum A_{ij}x_i x_j\\
+q(x_i)=\frac{|B_{ij}|^{n/2}}{(2\pi)^{n/2}}\exp -\tfrac12\sum B_{ij}x_i x_j.
+\end{align*}
+Then $r(x_i)$ will also be normal with quadratic form $C_{ij}$.  If the
+inverses of these forms are $a_{ij}$, $b_{ij}$, $c_{ij}$ then
+$$
+c_{ij}=a_{ij}+b_{ij}.
+$$
+We wish to show that these functions satisfy the minimizing conditions if
+and only if $a_{ij}=Kb_{ij}$ and thus give the minimum $H_3$ under the
+constraints.  First we have
+\begin{gather*}
+\log r(x_i)=\frac{n}{2}\log\frac1{2\pi}|C_{ij}|-\tfrac12\sum C_{ij}x_i x_j\\
+\int q(x_i-s_i)\log r(x_i)\,dx_i=\frac{n}{2}\log\frac1{2\pi}|C_{ij}|
+	-\tfrac12\sum C_{ij}s_i s_j
+	-\tfrac12\sum C_{ij} b_{ij}.
+\end{gather*}
+This should equal
+$$
+\frac{H_3}{H_1}\biggl[\frac{n}{2}\log\frac1{2\pi}|A_{ij}|
+	-\tfrac12\sum A_{ij}s_i s_j\biggr]
+$$
+which requires $\displaystyle A_{ij}=\frac{H_1}{H_3}C_{ij}$.  In this case
+$\displaystyle A_{ij}=\frac{H_1}{H_2}B_{ij}$ and both equations reduce to
+identities.
+
+\section{}
+\label{ap:7}
+
+The following will indicate a more general and more rigorous approach to
+the central definitions of communication theory.  Consider a probability
+measure space whose elements are ordered pairs $(x,y)$.  The variables
+$x$, $y$ are to be identified as the possible transmitted and received
+signals of some long duration $T$.  Let us call the set of all points whose
+$x$ belongs to a subset $S_1$ of $x$ points the strip over $S_1$, and
+similarly the set whose $y$ belong to $S_2$ the strip over $S_2$.  We
+divide $x$ and $y$ into a collection of non-overlapping measurable subsets
+$X_i$ and $Y_i$ approximate to the rate of transmission $R$ by
+$$
+R_1=\frac1T\sum_i P(X_i,Y_i)\log\frac{P(X_i,Y_i)}{P(X_i)P(Y_i)}
+$$
+where
+\begin{align*}
+P(X_i)\quad&\mbox{is the probability measure of the strip over $X_i$}\\
+P(Y_i)\quad&\mbox{is the probability measure of the strip over $Y_i$}\\
+P(X_i,Y_i)\quad&\mbox{is the probability measure of the
+	intersection of the strips}.
+\end{align*}
+A further subdivision can never decrease $R_1$.  For let $X_1$ be divided
+into $X_1=X_1'+X_1''$ and let
+\begin{gather*}
+\begin{aligned}
+P(Y_1)&=a  & P(X_1)&=b+c\\
+P(X_1')&=b & P(X_1',Y_1)&=d\\
+P(X_1'')&=c \qquad\qquad & P(X_1'',Y_1)&=e
+\end{aligned}\\
+P(X_1,Y_1)=d+e.
+\end{gather*}
+Then in the sum we have replaced (for the $X_1$, $Y_1$ intersection)
+$$
+(d+e)\log\frac{d+e}{a(b+c)}
+\quad\text{by}\quad
+d\log\frac{d}{ab}+e\log\frac{e}{ac}.
+$$
+It is easily shown that with the limitation we have on $b$, $c$, $d$, $e$,
+$$
+\biggl[\frac{d+e}{b+c}\biggr]^{d+e}\leq\frac{d^d e^e}{b^d c^e}
+$$
+and consequently the sum is increased.  Thus the various possible
+subdivisions form a directed set, with $R$ monotonic increasing with
+refinement of the subdivision.  We may define $R$ unambiguously as the
+least upper bound for $R_1$ and write it
+$$
+R=\frac1T\iint P(x,y)\log\frac{P(x,y)}{P(x)P(y)}\,dx\,dy.
+$$
+This integral, understood in the above sense, includes both the continuous
+and discrete cases and of course many others which cannot be
+represented in either form.  It is trivial in this formulation that if $x$
+and $u$ are in one-to-one correspondence, the rate from $u$ to $y$ is equal
+to that from $x$ to $y$.  If $v$ is any function of $y$ (not necessarily
+with an inverse) then the rate from $x$ to $y$ is greater than or equal to
+that from $x$ to $v$ since, in the calculation of the approximations, the
+subdivisions of $y$ are essentially a finer subdivision of those for $v$.
+More generally if $y$ and $v$ are related not functionally but
+statistically, i.e., we have a probability measure space $(y,v)$, then
+$R(x,v)\leq R(x,y)$.  This means that any operation applied to the received
+signal, even though it involves statistical elements, does not increase
+$R$.
+
+Another notion which should be defined precisely in an abstract formulation
+of the theory is that of ``dimension rate,'' that is the average number of
+dimensions required per second to specify a member of an ensemble.  In the
+band limited case $2W$ numbers per second are sufficient.  A general definition
+can be framed as follows.  Let $f_\alpha(t)$ be an ensemble of functions and
+let $\rho_T[f_\alpha(t),f_\beta(t)]$ be a metric measuring the ``distance''
+from $f_\alpha$ to $f_\beta$ over the time $T$ (for example the R.M.S.
+discrepancy over this interval.) Let $N(\eps,\delta,T)$ be the least
+number of elements $f$ which can be chosen such that all elements of the
+ensemble apart from a set of measure $\delta$ are within the distance
+$\eps$ of at least one of those chosen.  Thus we are covering the space
+to within $\eps$ apart from a set of small measure $\delta$.  We define the
+dimension rate $\lambda$ for the ensemble by the triple limit
+$$
+\lambda=\lim_{\delta\to0}\,\lim_{\eps\to0}\,\lim_{T\to\infty}
+	\frac{\log N(\eps,\delta,T)}{T\log\eps}.
+$$
+This is a generalization of the measure type definitions of dimension in
+topology, and agrees with the intuitive dimension rate for simple
+ensembles where the desired result is obvious.
+
+\endappendix

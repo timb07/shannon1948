@@ -1,0 +1,56 @@
+\documentclass[10pt]{article}
+\addtolength{\textheight}{77pt}\addtolength{\topmargin}{-35pt}
+\addtolength{\textwidth}{84pt}\addtolength{\oddsidemargin}{-42pt}
+\renewcommand{\topfraction}{.8}
+\usepackage{mathptm}
+\usepackage{cmgreek}
+\usepackage{shannon1948}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{epsfig}
+\renewenvironment{quote}
+  {\list{}{}%
+    \item\relax}
+  {\endlist}
+\renewcommand{\footnoterule}{\relax}
+\newtheoremstyle{plain}% name
+  {3pt}%        Space above, empty = `usual value'
+  {3pt}%        Space below
+  {\slshape}%   Body font
+  {\parindent}% Indent amount (empty = no indent, \parindent = para indent)
+  {\itshape}%   Thm head font
+  {:}%          Punctuation after thm head
+  {.5em}%       Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {}% Thm head spec
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{definition}{Definition}
+\def\eps{\epsilon}
+\makeatletter
+\def\lim{\qopname\relax\@empty{Lim}}
+\def\max{\qopname\relax\@empty{Max}}
+\def\min{\qopname\relax\@empty{Min}}
+\def\revisionnotice{%
+  \@specialpagefalse\gdef\@oddhead{\hspace*{-36pt}\smash{\vbox{%
+  \hbox{\footnotesize Reprinted with corrections from
+    {\it The Bell System Technical Journal,}}%
+  \vskip 1.5pt%
+  \hbox{\footnotesize Vol.~27, pp.~379--423, 623--656, July, October, 1948.}}}%
+  \hfil\gdef\@oddhead{}}}
+\makeatother
+\title{A Mathematical Theory of Communication}
+\author{C.~E.~Shannon}
+\begin{document}
+\maketitle
+\revisionnotice
+\input{intro}
+\input{part1}
+\input{part2}
+\input{app-i}
+\input{part3}
+\input{part4}
+\input{part5}
+\input{ack}
+\input{app-ii}
+\end{document}

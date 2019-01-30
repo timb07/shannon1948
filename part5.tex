@@ -1,0 +1,319 @@
+\part{The Rate for a Continuous Source}
+\section{Fidelity Evaluation Functions}
+
+In the case of a discrete source of information we were able to determine a
+definite rate of generating information, namely the entropy of the
+underlying stochastic process.  With a continuous source the situation is
+considerably more involved.  In the first place a continuously variable
+quantity can assume an infinite number of values and requires, therefore,
+an infinite number of binary digits for exact specification.  This means
+that to transmit the output of a continuous source with \emph{exact
+recovery} at the receiving point requires, in general, a channel of
+infinite capacity (in bits per second).  Since, ordinarily, channels have a
+certain amount of noise, and therefore a finite capacity, exact
+transmission is impossible.
+
+This, however, evades the real issue.  Practically, we are not interested
+in exact transmission when we have a continuous source, but only in
+transmission to within a certain tolerance.  The question is, can we assign
+a definite rate to a continuous source when we require only a certain
+fidelity of recovery, measured in a suitable way.  Of course, as the fidelity
+requirements are increased the rate will increase.  It will be shown that
+we can, in very general cases, define such a rate, having the property that
+it is possible, by properly encoding the information, to transmit it over a
+channel whose capacity is equal to the rate in question, and satisfy the
+fidelity requirements.  A channel of smaller capacity is insufficient.
+
+It is first necessary to give a general mathematical formulation of the
+idea of fidelity of transmission.  Consider the set of messages of a long
+duration, say $T$ seconds.  The source is described by giving the
+probability density, in the associated
+space, that the source will select the message in question $P(x)$.  A given
+communication system is described
+(from the external point of view) by giving the conditional probability
+$P_x(y)$ that if message $x$ is produced by the source the recovered
+message at the receiving point will be $y$.  The system as a whole
+(including source and transmission system) is described by the
+probability function $P(x,y)$ of having message $x$ and final output $y$.
+If this function is known, the complete characteristics of the system from
+the point of view of fidelity are known.  Any evaluation of fidelity must
+correspond mathematically to an operation applied to $P(x,y)$.  This
+operation must at least have the properties of a simple ordering of
+systems; i.e., it must be possible to say of two systems represented by
+$P_1(x,y)$ and $P_2(x,y)$ that, according to our fidelity criterion, either
+(1)~the first has higher fidelity, (2)~the second has higher fidelity, or
+(3)~they have equal fidelity.  This means that a criterion of fidelity can
+be represented by a numerically valued function:
+$$
+v\bigl(P(x,y)\bigr)
+$$
+whose argument ranges over possible probability functions $P(x,y)$.
+
+We will now show that under very general and reasonable assumptions the
+function $v\bigl(P(x,y)\bigr)$ can be written in a seemingly much more
+specialized form, namely as an average of a function $\rho(x,y)$ over the
+set of possible values of $x$ and $y$:
+$$
+v\bigl(P(x,y)\bigr)=\iint P(x,y)\rho(x,y)\,dx\,dy.
+$$
+To obtain this we need only assume (1)~that the source and system are
+ergodic so that a very long sample will be, with probability nearly 1,
+typical of the ensemble, and (2)~that the evaluation is ``reasonable'' in
+the sense that it is possible, by observing a typical input and output $x_1$
+and $y_1$, to form a tentative evaluation on the basis of these samples; and
+if these samples are increased in duration the tentative evaluation will, with
+probability 1, approach the exact evaluation based on a full knowledge of
+$P(x,y)$.  Let the tentative evaluation be $\rho(x,y)$.  Then the function
+$\rho(x,y)$ approaches (as $T\to\infty$) a constant for almost all $(x,y)$
+which are in the high probability region corresponding to the system:
+$$
+\rho(x,y)\to v\bigl(P(x,y)\bigr)
+$$
+and we may also write
+$$
+\rho(x,y)\to\iint P(x,y)\rho(x,y)\,dx\,dy
+$$
+since
+$$
+\iint P(x,y)\,dx\,dy=1.
+$$
+This establishes the desired result.
+
+The function $\rho(x,y)$ has the general nature of a ``distance'' between
+$x$ and $y$.\footnote{It is not a ``metric'' in the strict sense, however,
+since in general it does not satisfy either $\rho(x,y)=\rho(y,x)$ or
+$\rho(x,y)+\rho(y,z)\geq\rho(x,z)$.}  It measures how undesirable it is
+(according to our fidelity criterion) to receive $y$ when $x$ is transmitted.
+The general result given above can be restated as follows:  Any reasonable
+evaluation can be represented as an average of a distance
+function over the set of messages and recovered messages $x$ and $y$
+weighted according to the probability $P(x,y)$ of getting the pair in
+question, provided the duration $T$ of the messages be taken sufficiently
+large.
+
+The following are simple examples of evaluation functions:
+\begin{enumerate}
+\item R.M.S. criterion.
+$$
+v=\overline{\bigl(x(t)-y(t)\bigr)^2}.
+$$
+In this very commonly used measure of fidelity the distance function
+$\rho(x,y)$ is (apart from a constant factor) the square of the ordinary
+Euclidean distance between the points $x$ and $y$
+in the associated function space.
+$$
+\rho(x,y)=\frac1T\int_0^T\bigl[x(t)-y(t)\bigr]^2\,dt.
+$$
+\item Frequency weighted R.M.S. criterion.  More generally one can apply
+different weights to the different frequency components before using an
+R.M.S.  measure of fidelity.  This is equivalent to passing the difference
+$x(t)-y(t)$ through a shaping filter and then determining the average power
+in the output.  Thus let
+$$
+e(t)=x(t)-y(t)
+$$
+and
+$$
+f(t)=\int_{-\infty}^\infty e(\tau)k(t-\tau)\,d\tau
+$$
+then
+$$
+\rho(x,y)=\frac1T\int_0^Tf(t)^2\,dt.
+$$
+\item Absolute error criterion.
+$$
+\rho(x,y)=\frac1T\int_0^T\bigl|x(t)-y(t)\bigr|\,dt.
+$$
+\item The structure of the ear and brain determine implicitly
+an evaluation, or rather a number of evaluations,
+appropriate in the case of speech or music transmission.  There is, for
+example, an ``intelligibility'' criterion in which $\rho(x,y)$ is equal to
+the relative frequency of incorrectly interpreted words when message $x(t)$
+is received as $y(t)$.  Although we cannot give an explicit representation of
+$\rho(x,y)$ in these cases it could, in principle, be determined by
+sufficient experimentation.  Some of its properties follow from well-known
+experimental results in hearing, e.g., the ear is relatively insensitive to
+phase and the sensitivity to amplitude and frequency is roughly
+logarithmic.
+\item The discrete case can be considered as a specialization in which we have
+tacitly assumed an evaluation based on the frequency of errors.  The
+function $\rho(x,y)$ is then defined as the number of symbols in the
+sequence $y$ differing from the corresponding symbols in $x$ divided by the
+total number of symbols in $x$.
+\end{enumerate}
+
+\section{The Rate for a Source Relative to a Fidelity Evaluation}
+
+We are now in a position to define a rate of generating information for a
+continuous source.  We are given $P(x)$ for the source and an evaluation
+$v$ determined by a distance function $\rho(x,y)$ which will be assumed
+continuous in both $x$ and $y$.  With a particular system $P(x,y)$ the
+quality is measured by
+$$
+v=\iint\rho(x,y)P(x,y)\,dx\,dy.
+$$
+Furthermore the rate of flow of binary digits corresponding to $P(x,y)$ is
+$$
+R=\iint P(x,y)\log\frac{P(x,y)}{P(x)P(y)}\,dx\,dy.
+$$
+We define the rate $R_1$ of generating information for a given quality
+$v_1$ of reproduction to be the minimum of $R$ when we keep $v$ fixed at
+$v_1$ and vary $P_x(y)$.  That is:
+$$
+R_1=\min_{P_x(y)}\iint P(x,y)\log\frac{P(x,y)}{P(x)P(y)}\,dx\,dy
+$$
+subject to the constraint:
+$$
+v_1=\iint P(x,y)\rho(x,y)\,dx\,dy.
+$$
+
+This means that we consider, in effect, all the communication systems that
+might be used and that transmit with the required fidelity.  The rate of
+transmission in bits per second is calculated for each one and we choose
+that having the least rate.  This latter rate is the rate we assign the
+source for the fidelity in question.
+
+The justification of this definition lies in the following result:
+\begin{theorem}
+\label{thm:21}
+If a source has a rate $R_1$ for a valuation $v_1$ it is possible to encode
+the output of the source and transmit it over a channel of capacity $C$
+with fidelity as near $v_1$ as desired provided $R_1\leq C$.  This is not
+possible if $R_1>C$.
+\end{theorem}
+
+The last statement in the theorem follows immediately from the definition
+of $R_1$ and previous results.  If it were not true we could transmit more
+than $C$ bits per second over a channel of capacity $C$.  The first part
+of the theorem is proved by a method analogous to that used for
+Theorem~\ref{thm:11}.  We may, in the first place, divide the $(x,y)$ space
+into a large number of small cells and represent the situation as a
+discrete case.  This will not change the evaluation function by more than
+an arbitrarily small amount (when the cells are very small) because of the
+continuity assumed for $\rho(x,y)$.  Suppose that $P_1(x,y)$ is the
+particular system which minimizes the rate and gives $R_1$.  We choose from
+the high probability $y$'s a set at random containing
+$$
+2^{(R_1+\eps)T}
+$$
+members where $\eps\to0$ as $T\to\infty$.  With large $T$ each chosen point
+will be connected by a high probability line (as in Fig.~\ref{fig:10}) to a
+set of $x$'s.  A calculation similar to that used in proving
+Theorem~\ref{thm:11} shows that with large $T$ almost all $x$'s are covered
+by the fans from the chosen $y$ points for almost all choices of the $y$'s.
+The communication system to be used operates as follows: The
+selected points are assigned binary numbers.  When a message $x$ is
+originated it will (with probability approaching 1 as $T\to\infty$) lie
+within at least one of the fans.  The corresponding binary number is
+transmitted (or one of them chosen arbitrarily if there are several) over
+the channel by suitable coding means to give a small probability of error.
+Since $R_1\leq C$ this is possible.  At the receiving point the
+corresponding $y$ is reconstructed and used as the recovered message.
+
+The evaluation $v_1'$ for this system can be made arbitrarily close to
+$v_1$ by taking $T$ sufficiently large.  This is due to the fact that for
+each long sample of message $x(t)$ and recovered message $y(t)$ the
+evaluation approaches $v_1$ (with probability 1).
+
+It is interesting to note that, in this system, the noise in the recovered
+message is actually produced by a kind of general quantizing at the
+transmitter and not produced by the noise in the channel.  It is more or
+less analogous to the quantizing noise in PCM.
+
+\section{The Calculation of Rates}
+
+The definition of the rate is similar in many respects to the definition
+of channel capacity.  In the former
+$$
+R=\min_{P_x(y)}
+\iint P(x,y)\log\frac{P(x,y)}{P(x)P(y)}\,dx\,dy
+$$
+with $P(x)$ and $\displaystyle v_1=\iint P(x,y)\rho(x,y)\,dx\,dy$ fixed.
+In the latter
+$$
+C=\max_{P(x)}
+\iint P(x,y)\log\frac{P(x,y)}{P(x)P(y)}\,dx\,dy
+$$
+with $P_x(y)$ fixed and possibly one or more other constraints (e.g., an
+average power limitation) of the form $K=\iint P(x,y)\lambda(x,y)\,dx\,dy$.
+
+A partial solution of the general maximizing problem for determining the
+rate of a source can be given.  Using Lagrange's method we consider
+$$
+\iint\biggl[P(x,y)\log\frac{P(x,y)}{P(x)P(y)}
++\mu P(x,y)\rho(x,y)+\nu(x)P(x,y)\biggr]\,dx\,dy.
+$$
+The variational equation (when we take the first variation on $P(x,y)$)
+leads to
+$$
+P_y(x)=B(x)e^{-\lambda\rho(x,y)}
+$$
+where $\lambda$ is determined to give the required fidelity and $B(x)$ is
+chosen to satisfy
+$$
+\int B(x)e^{-\lambda\rho(x,y)}\,dx=1.
+$$
+
+This shows that, with best encoding, the conditional probability of a
+certain cause for various received $y$, $P_y(x)$ will decline exponentially
+with the distance function $\rho(x,y)$ between the $x$ and $y$ in question.
+
+In the special case where the distance function $\rho(x,y)$ depends only on
+the (vector) difference between $x$ and $y$,
+$$
+\rho(x,y)=\rho(x-y)
+$$
+we have
+$$
+\int B(x)e^{-\lambda\rho(x-y)}\,dx=1.
+$$
+Hence $B(x)$ is constant, say $\alpha$, and
+$$
+P_y(x)=\alpha e^{-\lambda\rho(x-y)}.
+$$
+Unfortunately these formal solutions are difficult to evaluate in
+particular cases and seem to be of little value.  In fact, the actual
+calculation of rates has been carried out in only a few very simple cases.
+
+If the distance function $\rho(x,y)$ is the mean square discrepancy between
+$x$ and $y$ and the message ensemble is white noise, the rate can be
+determined.  In that case we have
+$$
+R=\min\bigl[H(x)-H_y(x)\bigr]=H(x)-\max H_y(x)
+$$
+with $N=\overline{(x-y)^2}$.  But the
+$\max H_y(x)$ occurs when $y-x$ is a white noise, and is equal to
+$W_1\log 2\pi e N$ where $W_1$ is the bandwidth of the message ensemble.
+Therefore
+\begin{align*}
+R&=W_1\log 2\pi e Q - W_1\log 2\pi e N\\
+	&=W_1\log\frac{Q}{N}
+\end{align*}
+where $Q$ is the average message power.  This proves the following:
+\begin{theorem}
+The rate for a white noise source of power $Q$ and band $W_1$ relative to
+an R.M.S. measure of fidelity is
+$$
+R=W_1\log\frac{Q}{N}
+$$
+where $N$ is the allowed mean square error between original and recovered
+messages.
+\end{theorem}
+
+More generally with any message source we can obtain inequalities bounding
+the rate relative to a mean square error criterion.
+
+\begin{theorem}
+The rate for any source of band $W_1$ is bounded by
+$$
+W_1\log\frac{Q_1}{N}\leq R\leq W_1\log\frac{Q}{N}
+$$
+where $Q$ is the average power of the source, $Q_1$ its entropy power
+and $N$ the allowed mean square error.
+\end{theorem}
+
+The lower bound follows from the fact that the $\max H_y(x)$ for a given
+$\overline{(x-y)^2}=N$ occurs in the white noise case.  The upper bound
+results if we place points (used in the proof of Theorem~\ref{thm:21}) not
+in the best way but at random in a sphere of radius $\sqrt{Q-N}$.
+

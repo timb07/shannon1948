@@ -1,0 +1,23 @@
+%!PS-Adobe-2.0 EPSF-3.0
+%%BoundingBox: 0 0 280 240
+%%EndComments
+/xlogx {dup 0 le {pop 0} {dup log mul} ifelse} def
+/entropy {dup xlogx exch 1 sub neg xlogx add neg 2 log div} def
+%%EndProlog
+gsave
+.6 setlinewidth
+30 15 translate
+200 200 scale
+currentlinewidth 200 div setlinewidth
+0 .1 1.25 {newpath 0 moveto 0 1.1 rlineto stroke} for
+0 .1 1.15 {newpath 0 exch moveto 1.2 0 rlineto stroke} for
+gsave
+newpath
+0 0 moveto 1 0 lineto 1 1 lineto 0 1 lineto closepath clip
+newpath 
+currentlinewidth 1.5 mul setlinewidth
+0 0 moveto
+0.01 .01 1.0 {dup entropy lineto} for
+stroke
+grestore
+grestore
